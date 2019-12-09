@@ -1,0 +1,11 @@
+class MyGPIO: public QObject
+{
+Q_OBJECT
+    QObject *fenster;
+public:
+    MyGPIO(QObject *ptr_fenster) {fenster=ptr_fenster;  wiringPiSetupGpio() ; }
+public slots:
+   void _pinMode(int pin, int mode){pinMode(pin,mode);}
+   void _digitalWrite(int pin,int value){ digitalWrite(pin,value);}
+   void _digitalRead(int pin){fenster->setProperty("value",digitalRead (pin));}
+};

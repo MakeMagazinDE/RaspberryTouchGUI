@@ -1,0 +1,11 @@
+#Beispiel 2
+Slider{
+    id:myslider
+    onValueChanged: lable.text=value
+    }
+Label{
+    id:lable
+    text:"Noch nichts passiert!"
+    }
+Button{
+    onClicked: label.text="Stopp!" 

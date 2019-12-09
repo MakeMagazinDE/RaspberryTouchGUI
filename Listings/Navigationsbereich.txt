@@ -1,0 +1,17 @@
+ListView{
+   id:screen_buttons
+   model:lModel_pages
+   anchors.top:parent.top
+   anchors.bottom: powerButton.top
+   anchors.left:powerButton.left
+   anchors.right:powerButton.right
+   snapMode: ListView.SnapToItem
+   orientation:Qt.Vertical
+   delegate: Button {
+                 width:parent.width
+                 text: model.titel
+                 flat:screens.currentIndex == index?false:true
+                 icon.source:img_source
+                 onClicked: screens.currentIndex = index;
+                 }
+    }

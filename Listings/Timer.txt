@@ -1,0 +1,11 @@
+GPIO{
+    pin:21
+    mode: GPIO.Input
+    onValueChanged: console.debug(value)
+    Timer {
+        interval: 100
+        repeat: true
+        running:gpio.pin?true:false
+        onTriggered: gpio.updateValue()
+    }
+}

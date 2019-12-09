@@ -1,0 +1,32 @@
+ComboBox{
+    model:lModel_GPIO
+    textRole: "key" 
+    property int pin: lModel_GPIO.get(currentIndex).pin
+    property int lastIndex :0
+    property string filter:""
+    signal add()
+    signal remove()
+    delegate: ItemDelegate {
+        id:delegateItem
+        width: controlPin.width
+        height: visible?controlPin.height:0
+        visible: (filter ==="" || type==="nothing"|| type===filter)?true:false
+        contentItem: Text {
+                           text:key+" ["+pos+"]";
+                           anchors.fill: parent
+                           anchors.leftMargin: 10
+                           verticalAlignment: Text.AlignVCenter
+                           font.pixelSize: parent.font.pixelSize
+                           color: (reserved==1&&pin>0)?Material.accent:Material.foreground
+                          }
+    }
+    Component.onDestruction: lModel_GPIO.get(lastIndex).reserved = false
+    onCurrentIndexChanged: {
+        if (lModel_GPIO.get(currentIndex).reserved=== true)currentIndex=0
+        lModel_GPIO.get(lastIndex).reserved= false
+        lModel_GPIO.get(currentIndex).reserved= true
+        if (lastIndex==0 && currentIndex>0) add()
+        if (currentIndex==0 && lastIndex>0) remove()
+        lastIndex=currentIndex
+    }
+}

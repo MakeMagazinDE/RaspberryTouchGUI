@@ -1,0 +1,5 @@
+GPIO{
+    pin:21
+    mode: GPIO.Output
+    state: GPIO.High
+}

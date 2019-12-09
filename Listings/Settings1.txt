@@ -1,0 +1,5 @@
+app.setOrganizationName("maker");
+       
+app.setOrganizationDomain("heise.de");
+       
+app.setApplicationName("RPI_Maker");

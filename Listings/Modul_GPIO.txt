@@ -1,0 +1,48 @@
+Component {
+        id: component_gpio
+        Row{
+            spacing:10
+            ComboBoxGPIO{
+                id:cb_pin
+                onAdd: listView.model.append(listView.model.get(0))
+                onRemove:listView.model.remove(index)
+          }
+            ComboBox{
+                id:cb_mode
+                property int mode: model.get(currentIndex).mode
+                model: ListModel {
+                           ListElement { key: "IN";  mode:GPIO.Input}
+                           ListElement { key: "IN mit Pull"; mode:GPIO.InputPullUp }
+                           ListElement { key: "OUT"; pin:20; mode: GPIO.Output }
+                }
+                textRole: "key"
+            }
+            RoundButton{
+                id:b_state
+                width:height*1.5
+	       checkable: true
+                checked:false
+                text: checked?qsTr("High"):qsTr("Low ")
+            }
+            Rectangle{
+                anchors.verticalCenter: parent.verticalCenter
+                height:parent.height/2
+                width:height
+                radius: height/2
+                border.color: "gray"
+                border.width: 1
+                color: gpio.value?"red":"black"
+            }
+            GPIO{
+                id:gpio
+                pin:cb_pin.pin
+                mode:cb_mode.mode
+                state:b_state.checked
+                }
+                Timer {
+                    interval: 100
+                    repeat: true
+                    running:gpio.pin?true:false
+                    onTriggered: gpio.updateValue()
+                }
+           }

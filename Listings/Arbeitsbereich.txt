@@ -1,0 +1,18 @@
+ListView{
+   id:screens
+   model:lModel_pages
+   anchors.right:parent.right
+   anchors.top: parent.top
+   anchors.bottom :parent.bottom
+   anchors.left:screen_buttons.right
+   anchors.margins: 5
+   highlightMoveDuration: 0
+   snapMode: ListView.SnapToItem
+   orientation:Qt.Vertical
+   highlightRangeMode: ListView.StrictlyEnforceRange
+   delegate: Loader {
+                 width: screens.width
+                 height: screens.height
+                 source: model.source
+        }
+    }

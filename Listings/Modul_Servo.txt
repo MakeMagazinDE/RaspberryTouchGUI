@@ -1,0 +1,49 @@
+//Listing ohne Positionierung
+Page {
+    ComboBoxGPIO{
+        id:cb_servo
+        filter:"PWM"
+    }
+    Dial {
+           id: dial_servo
+           to: 180
+           onValueChanged: gpio_servo.update()
+    }
+    Slider {
+           id: s_freq
+           orientation: Qt.Vertical
+           from: 10
+           to:150
+           value: 50
+       }
+    RangeSlider{
+        id:r_servo_range
+        from:0.1
+        to:3.0
+        snapMode: "SnapAlways"
+        stepSize: 0.05
+        first.value: 1
+        second.value:2.5
+        first.onValueChanged: {dial_servo.value=dial_servo.from;gpio_servo.update();}
+        second.onValueChanged:{dial_servo.value=dial_servo.to;gpio_servo.update();}
+      }
+    Label {
+        text: dial_servo.value.toFixed(0) +"°"
+    }
+    Label {
+        text: "Frequenz: " + s_freq.value.toFixed(0) + "Hz"
+    }
+    Label {
+        text: r_servo_range.first.value.toFixed(2)+"ms"
+    }
+    Label {
+        text: r_servo_range.second.value.toFixed(2)+"ms"
+    }
+    GPIO{
+        id:gpio_servo
+        pin:cb_servo.pin
+        function update(){gpio_servo.setServo(dial_servo.value/ dial_servo.to,
+            s_freq.freq, r_servo_range.first.value, r_servo_range.second.value);
+        }
+    }
+}

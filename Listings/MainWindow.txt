@@ -1,0 +1,28 @@
+import QtQuick2.7
+import QtQuick.Controls2.4
+
+ApplicationWindow {
+    id:root
+    visible: true
+    visibility:"FullScreen"
+
+    Image {
+        id: powerButton
+        anchors.bottom:parent.bottom
+        anchors.left: parent.left
+	anchors.margins: 20
+        width:parent.width*0.2  
+        height: width
+        source: "img/Power.png"
+        fillMode: Image.PreserveAspectFit
+        MouseArea{
+            anchors.fill: parent
+            onClicked: Qt.quit()
+        }
+    }
+    MouseArea {
+        anchors.fill: parent
+        enabled: false
+        cursorShape:Qt.BlankCursor
+    }
+}

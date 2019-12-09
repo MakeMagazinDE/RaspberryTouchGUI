@@ -1,0 +1,5 @@
+Q_ENUMS(mode)
+Q_ENUMS(state)
+public:
+    enum mode { Input=0, Output=1, PWM_OUTPUT=2 };
+    enum state{ Low=0, High=2};

@@ -1,0 +1,10 @@
+import Qt.labs.settings 1.0
+ApplicationWindow {
+    id:root
+    Settings{
+        id:settings
+        property alias theme: root.theme
+        property alias accent: root.accent
+        property alias fullscreen: root.fullscreen
+        property alias page: screens.currentIndex
+    }

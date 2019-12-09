@@ -1,0 +1,7 @@
+ListModel {
+    id: lModel_pages
+    ListElement{ titel:"GPIO";    source:"PageGPIO.qml";    img_source:"img/io.png"}
+    ListElement{ titel:"Chart";   source:"PageChart.qml";   img_source:"img/chart.png”}
+    ListElement{ titel:"Servo";   source:"PageServo.qml";   img_source:"img/servo.png"}
+    ListElement{ titel:"Settings";source:"PageSettings.qml";img_source=””} 
+}

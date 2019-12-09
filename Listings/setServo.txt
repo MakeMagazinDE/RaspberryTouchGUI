@@ -1,0 +1,8 @@
+void myGPIO::setServo(double winkel, unsigned int freq, double low, double high){
+    const unsigned int resolution=1023;
+    double tick = double(1000)/(resolution*freq);
+    int position=int ((low+(high-low)*winkel)/tick);
+    pwmSetRange (resolution);
+    pwmSetClock (18750/freq);
+    pwmWrite(m_pin, position);
+}

@@ -1,0 +1,11 @@
+#Beispiel 1
+Slider{
+    id:myslider
+    }
+Label{
+    id:lable
+    text: myslider.value
+}
+Button{
+    onClicked: label.text="Stopp!" 
+    }

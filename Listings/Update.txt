@@ -1,0 +1,6 @@
+void myGPIO::updateValue(){
+     if (m_value!=digitalRead (m_pin)){
+         m_value=digitalRead (m_pin);
+         emit valueChanged();
+     }
+}              

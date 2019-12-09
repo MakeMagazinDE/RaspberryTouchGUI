@@ -1,0 +1,8 @@
+int main(int argc, char *argv[]){
+…
+ QObject *fenster =engine.rootObjects()[0];
+ MyGPIO myGPIO(fenster);
+ QObject::connect(fenster, SIGNAL(digitalWrite(int,int)),&myGPIO, SLOT(_digitalWrite(int,int)));
+ QObject::connect(fenster, SIGNAL(digitalRead(int)),&myGPIO, SLOT(_digitalRead(int)));
+ QObject::connect(fenster, SIGNAL(pinMode(int,int)),&myGPIO, SLOT(_pinMode(int,int)));
+…}

@@ -1,0 +1,7 @@
+ListModel {
+    id: lModel_GPIO
+    ListElement {key: "leer";    pos:0;  pin:0;  reserved: false; type:"nothing"}
+    ListElement {key: "GPIO 2";  pos:3;  pin:2;  reserved: false; type:"I2C"}
+    ListElement {key: "GPIO 3";  pos:5;  pin:3;  reserved: false; type:"I2C"
+    …
+    

@@ -1,0 +1,7 @@
+ApplicationWindow {
+…
+    signal digitalWrite(int pin, int value)
+    signal digitalRead(int pin)
+    signal pinMode(int pin,int mode)
+    property int value
+…}

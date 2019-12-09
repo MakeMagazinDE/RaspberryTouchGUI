@@ -1,0 +1,10 @@
+import QtQuick 2.8
+import QtQuick.Controls 2.4
+import Wire 1.0
+ListView {
+        id:listView
+        spacing: 10
+        anchors.fill: parent
+        model:ListModel {ListElement {leer:0}}
+        delegate: component_gpio
+}
